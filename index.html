@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Juego Dragon Ball</title>
+</head>
+
+<body>
+
+    <style type="text/css">
+        #world {
+            background-image: url(Imagenes/namek.jpg);
+            width: 863px;
+            height: 600px;
+            background-repeat: no-repeat;
+            background-size: 100%;
+
+        }
+
+        .player {
+            height: 80px;
+            width: 80px;
+            display: inline-block;
+            background-image: url(imagenes/goku.png);
+            background-size: contain;
+            position: absolute;
+            background-repeat: no-repeat;
+
+        }
+
+        .cell {
+            height: 100px;
+            width: 100px;
+            display: inline-block;
+            background-image: url(imagenes/minicell.png);
+            background-size: contain;
+            position: absolute;
+            left: 800px;
+            top: 250px;
+            background-repeat: no-repeat;
+        }
+
+        #cuadrodevidagoku {
+            height: 60px;
+            width: 250px;
+            display: inline-block;
+            background-image: url(imagenes/cuadrovidagoku.png);
+            background-size: contain;
+            position: absolute;
+            left: 9px;
+            top: 8px;
+            background-repeat: no-repeat;
+        }
+
+        #barradevidagoku {
+            height: 60px;
+            width: 225px;
+            display: inline-block;
+            background-image: url(imagenes/barravidagoku.png);
+            background-size: contain;
+            position: absolute;
+            left: 30px;
+            top: 12px;
+            background-repeat: no-repeat;
+        }
+
+        #cuadrodevidacell {
+            height: 60px;
+            width: 250px;
+            display: inline-block;
+            background-image: url(imagenes/cuadrovidaminicell.png);
+            background-size: contain;
+            position: absolute;
+            left: 620px;
+            top: 8px;
+            background-repeat: no-repeat;
+        }
+
+        #barradevidadecell {
+            height: 31px;
+            width: 251px;
+            display: inline-block;
+            background-image: url(imagenes/barravidaminicell.png);
+            background-size: contain;
+            position: absolute;
+            left: 625px;
+            top: 12px;
+            background-repeat: no-repeat;
+        }
+    </style>
+    <div id="world">
+        <div id="players">
+            <div class="player"></div>
+        </div>
+                
+
+        <div class="cell"></div>
+        <div id="cuadrodevidagoku"></div>
+        <div id="barradevidagoku"></div>
+    </div>
+    <div id="cuadrodevidacell"></div>
+    <div id="barradevidadecell"></div>
+    </div>
+
+    <script type="text/javascript">
+
+        var player = {
+            left: 100,
+            top: 100
+        }
+
+        var enemies = [
+            { left: 350, top: 200 },
+            { left: 450, top: 250 },
+            { left: 550, top: 120 },
+            { left: 250, top: 320 }
+        ]
+        function drawPlayer() {
+			content = "<div class='player' style='left: "+player.left+"px; top: "+player.top+"px;'></div>";
+			document.getElementById("players").innerHTML = content;
+        }
+        drawPlayer();
+
+        document.onkeydown = function (e) {
+            console.log(e);
+            if (e.keyCode == 37) {
+                if (player.left > 0) {
+                    player.left -= 10;
+
+                    //console.log("izquierda");
+                }
+            }
+            if (e.keyCode == 39) {
+                if (player.left < 800) {
+                    player.left += 10;
+
+                    //console.log("derecha");
+                }
+            }
+            if (e.keyCode == 38) {
+                if (player.top > 0) {
+                    player.top -= 10;
+
+
+                    //console.log("arriba");
+                }
+            }
+            if (e.keyCode == 40) {
+                if (player.top < 510) {
+                    player.top += 10;
+
+                    //console.log("abajo");
+                }
+            }
+            drawPlayer();
+        }
+    </script>
